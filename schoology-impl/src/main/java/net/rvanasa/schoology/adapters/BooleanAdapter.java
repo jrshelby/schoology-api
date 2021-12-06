@@ -19,9 +19,20 @@ public class BooleanAdapter implements JsonDeserializer<Boolean>
 		try {
 			int i = Integer.parseInt(value);
 			
-			return i == 0 ? false : i == 1 ? true : null;
+			if (i == 0)
+				return false;
+			else if (i == 1)
+				return true;
+			else
+				return null;
 		} catch (Exception e) {
-			return value.equalsIgnoreCase("false") ? false : value.equalsIgnoreCase("true") ? true : null;
+			if (value.equalsIgnoreCase("false"))
+				return false;
+			else if (value.equalsIgnoreCase("true"))
+				return true;
+			else
+				return null;
+			
 		}
         
 	}
