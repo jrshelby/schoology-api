@@ -1,5 +1,6 @@
 package net.rvanasa.schoology;
 
+import net.rvanasa.schoology.obj.assignments.*;
 import net.rvanasa.schoology.impl.SchoologyRealm;
 import net.rvanasa.schoology.impl.SchoologyResponse;
 import net.rvanasa.schoology.obj.albums.SchoologyMediaAlbumContent;
@@ -238,6 +239,13 @@ public interface ISchoologyRequestHandler
 	default public SchoologyDiscussionRepliesPage getGroupDiscussionRepliesPage(String group_id, String discussion_id)
 	{
 		return getDiscussionRepliesPage(SchoologyRealm.GROUP + group_id, discussion_id);
+	}
+	
+	public SchoologyAssignmentsPage getAssignmentsPage(String realm);
+	
+	default public SchoologyAssignmentsPage getSectionAssignmentsPage(String section_id)
+	{
+		return getAssignmentsPage(SchoologyRealm.COURSE_SECTION + section_id);
 	}
 	
 	public SchoologyMediaAlbumsPage getMediaAlbumsPage(String realm);

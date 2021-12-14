@@ -20,6 +20,7 @@ import com.google.gson.GsonBuilder;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.rvanasa.schoology.obj.assignments.*;
 import net.rvanasa.schoology.ISchoologyRequestHandler;
 import net.rvanasa.schoology.adapters.BooleanAdapter;
 import net.rvanasa.schoology.adapters.UnixTimestampAdapter;
@@ -385,6 +386,15 @@ public class SchoologyRequestHandler implements ISchoologyRequestHandler
 		
 		return gson.fromJson(response.getBody().parse().get("comment").asRawData(), SchoologyBlogPostComment[].class);
 	}
+	
+
+	public SchoologyAssignmentsPage getAssignmentsPage(String realm)
+	{
+		SchoologyResponse response = get(realm + "/grade_items").requireSuccess();
+		
+		return gson.fromJson(response.getBody().parse().asRawData(), SchoologyAssignmentsPage.class).reference(this);
+	}
+	
 
 	@Override
 	public SchoologyDiscussionsPage getDiscussionsPage(String realm)
