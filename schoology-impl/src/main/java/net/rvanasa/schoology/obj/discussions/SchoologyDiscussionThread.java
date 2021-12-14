@@ -24,7 +24,7 @@ public class SchoologyDiscussionThread extends SchoologyReference<SchoologyDiscu
 	boolean graded;
 	Date due;
 	@SerializedName(value="grade_item_id")
-	int gradeItemID;
+	String gradeItemID;
 	@SerializedName(value="grading_scale")
 	int gradingScale;
 	@SerializedName(value="grading_period")

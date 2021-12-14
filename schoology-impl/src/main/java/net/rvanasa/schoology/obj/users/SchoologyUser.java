@@ -63,7 +63,7 @@ public class SchoologyUser extends SchoologyReference<SchoologyUser>
 	@SerializedName(value="tz_name")
 	String tzName;
 	// 'View user parents' permission required from schoology API to access this information
-	SchoologyUser[] parents;
+	// SchoologyUser[] parents;   // Not a real fix
 	//TODO: comma-delimited list of integers
 	@SerializedName(value="parent_uids")
 	String parentUIDs;

@@ -31,6 +31,8 @@ public abstract class SchoologyPage<T> extends SchoologyReference<T>
 	 */
 	public boolean hasNext()
 	{
+		if (links == null)
+			return false;
 		return links.getNext() != null;
 	}
 	
