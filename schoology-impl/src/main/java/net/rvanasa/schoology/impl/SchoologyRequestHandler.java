@@ -395,6 +395,13 @@ public class SchoologyRequestHandler implements ISchoologyRequestHandler
 		return gson.fromJson(response.getBody().parse().asRawData(), SchoologyAssignmentsPage.class).reference(this);
 	}
 	
+	public SchoologyGradesContainer getGradesPage(String section_id, String assignment_id)
+	{
+		SchoologyResponse response = get(SchoologyRealm.COURSE_SECTION + section_id + "/grades?assignment_id="+assignment_id).requireSuccess();
+		
+		return gson.fromJson(response.getBody().parse().asRawData(), SchoologyGradesContainer.class).reference(this);
+	}
+	
 
 	@Override
 	public SchoologyDiscussionsPage getDiscussionsPage(String realm)

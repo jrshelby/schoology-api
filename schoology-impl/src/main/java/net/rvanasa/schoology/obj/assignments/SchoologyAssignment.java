@@ -14,6 +14,9 @@ import net.rvanasa.schoology.obj.SchoologyReference;
 @Getter
 public class SchoologyAssignment extends SchoologyReference<SchoologyAssignment>
 {
+	
+	// Incomplete list of fields
+	
 	String title;
 	String description;
 	
