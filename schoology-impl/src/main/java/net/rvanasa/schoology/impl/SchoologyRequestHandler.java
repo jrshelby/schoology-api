@@ -420,6 +420,14 @@ public class SchoologyRequestHandler implements ISchoologyRequestHandler
 		return response;
 	}
 	
+	public SchoologyGradingCategoriesPage getSectionGradingCategories(String section_id)
+	{
+		SchoologyResponse response = get(SchoologyRealm.COURSE_SECTION + section_id + "/grading_categories").requireSuccess();
+		
+		return gson.fromJson(response.getBody().parse().asRawData(), SchoologyGradingCategoriesPage.class).reference(this);
+	}
+	
+	
 
 	@Override
 	public SchoologyDiscussionsPage getDiscussionsPage(String realm)

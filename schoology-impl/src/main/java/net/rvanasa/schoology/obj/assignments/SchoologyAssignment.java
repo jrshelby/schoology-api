@@ -32,7 +32,7 @@ public class SchoologyAssignment extends SchoologyReference<SchoologyAssignment>
 	@SerializedName(value="grading_period")
 	int gradingPeriod;
 	@SerializedName(value="grading_category")
-	int gradingCateogry;
+	String gradingCateogry;
 	
 	String type;
 	
