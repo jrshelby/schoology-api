@@ -3,6 +3,7 @@ package net.rvanasa.schoology.obj.assignments;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.rvanasa.schoology.obj.SchoologyPage;
 
 /*
@@ -10,6 +11,7 @@ import net.rvanasa.schoology.obj.SchoologyPage;
  * Represents a page of discussions
  */
 @Getter
+@Setter
 public class SchoologyGradesPage extends SchoologyPage<SchoologyGradesPage>
 {
 	

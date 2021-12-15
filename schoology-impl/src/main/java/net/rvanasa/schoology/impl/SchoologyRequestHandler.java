@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import java.util.List;
 
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.OAuthRequest;
@@ -17,6 +18,8 @@ import org.scribe.oauth.OAuthService;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -400,6 +403,21 @@ public class SchoologyRequestHandler implements ISchoologyRequestHandler
 		SchoologyResponse response = get(SchoologyRealm.COURSE_SECTION + section_id + "/grades?assignment_id="+assignment_id).requireSuccess();
 		
 		return gson.fromJson(response.getBody().parse().asRawData(), SchoologyGradesContainer.class).reference(this);
+	}
+	
+	
+	public SchoologyResponse putGrades(String section_id, List<SchoologyGrade> grades) {
+		
+		JsonElement gradesTree = gson.toJsonTree(grades.toArray(new SchoologyGrade[0]));
+		
+		JsonObject gradesObj = new JsonObject();
+		gradesObj.add("grade", gradesTree);
+		JsonObject top = new JsonObject();
+		top.add("grades", gradesObj);
+		
+		SchoologyResponse response = put(SchoologyRealm.COURSE_SECTION + section_id + "/grades",top.toString()).requireSuccess();
+		
+		return response;
 	}
 	
 

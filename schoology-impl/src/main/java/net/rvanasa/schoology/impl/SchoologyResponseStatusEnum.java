@@ -7,6 +7,7 @@ public enum SchoologyResponseStatusEnum
 	SUCCESS_OK(200, "OK"),
 	SUCCESS_CREATED(201, "Create"),
 	SUCCESS_NO_CONTENT(204, "No content"),
+	SUCCESS_MULTI_CODE(207, "Multi-code"),
 	
 	UNAUTHORIZED(401, "Unauthorized"),
 	PERMISSION(403, "Insufficient permission level"),
