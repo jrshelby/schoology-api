@@ -13,7 +13,7 @@ import com.google.gson.JsonParseException;
 public class UnixTimestampAdapter implements JsonDeserializer<Date>
 {
 	
-	private final SimpleDateFormat dateTimeFormat = new SimpleDateFormat("YYYY-MM-DD HH:mm:ss");
+	private final SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	@Override
 	public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) 
@@ -21,19 +21,21 @@ public class UnixTimestampAdapter implements JsonDeserializer<Date>
 		
 		String raw = json.getAsString();
 		
+		
+		
+		
+
+		//Assume datetime format
 		try {
-			//Assume unix time
-			long l = Long.parseLong(raw);
-			
-			return new Date(l);
-		} catch (Exception e) {
-			//Assume datetime format
-			try {
-				return dateTimeFormat.parse(raw);
-			} catch (ParseException e1) {
-				return null;
-			}
+			//System.err.println("Parsing " + raw);
+			Date t = dateTimeFormat.parse(raw);
+			//System.err.println("Got " + t);
+			return t;
+		} catch (ParseException e1) {
+			return null;
 		}
+
+
 		
 	}
 
